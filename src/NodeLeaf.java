@@ -1,18 +1,21 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * Created by Leonardo Linhares on 27/04/2016.
  */
 public class NodeLeaf extends Node{
 
-    ArrayList<Integer> dataEntry;
+    // mapeando <k, lista de rids>
+    HashMap<Integer, ArrayList<Integer>> dataEntry;
     NodeLeaf left;
     NodeLeaf right;
 
     public NodeLeaf() {
+        dataEntry = new HashMap<>();
         children = new ArrayList<>(2*order+1);
-        keys =  new ArrayList<>(2*order);
-        dataEntry = new ArrayList<>();
         isLeaf = true;
     }
 }
