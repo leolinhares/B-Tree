@@ -13,5 +13,6 @@ public class NodeLeaf extends Node{
         children = new ArrayList<>(2*order+1);
         keys =  new ArrayList<>(2*order);
         dataEntry = new ArrayList<>();
+        isLeaf = true;
     }
 }
