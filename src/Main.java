@@ -15,6 +15,8 @@ public class Main {
         n.dataEntry.put(2000,ridList);
         n.dataEntry.get(2000).add(27);
 
-        System.out.println(n.dataEntry);
+        //System.out.println(n.dataEntry);
+        ReadData rd = new ReadData();
+        rd.read();
     }
 }
