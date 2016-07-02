@@ -23,13 +23,9 @@ public class ReadData {
                 DataItem item = new DataItem();
                 item.setRid(lines);
                 item.setAnoColheita(Integer.parseInt(wine[3]));
+
                 wineList.add(item);
-
                 lines += line.length()+1; // salva quanto foi lido nessa linha
-
-
-
-                // manda o item para a funcao que cria a arvore
 
                 br.close();
             }
