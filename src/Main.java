@@ -16,7 +16,7 @@ public class Main {
         rd.read(wineList);
         Collections.sort(wineList);
         BTree bt = new BTree();
-        bt.createTree(wineList);
+//        bt.createTree(wineList);
         for (DataItem wine :
                 wineList) {
             System.out.println(wine.getRid()+" " + wine.getAnoColheita());

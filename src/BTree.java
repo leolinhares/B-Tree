@@ -11,10 +11,9 @@ public class BTree {
     }
 
     public void createTree(ArrayList<DataItem> dataItemList){
-        for (DataItem item :
-                dataItemList) {
-            // nao sei ainda
-        }
+
+
+
     }
 
 }
