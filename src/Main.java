@@ -1,4 +1,6 @@
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by thiagoisaias on 4/27/16.
@@ -7,16 +9,29 @@ public class Main {
 
 
     public static void main(String[] args) {
-        NodeLeaf n = new NodeLeaf();
-        ArrayList ridList = new ArrayList();
-        ridList.add(21);
-        ridList.add(12);
-        ridList.add(5);
-        n.dataEntry.put(2000,ridList);
-        n.dataEntry.get(2000).add(27);
 
-        //System.out.println(n.dataEntry);
+
+        ArrayList<DataItem> wineList = new ArrayList<>();
         ReadData rd = new ReadData();
-        rd.read();
+        rd.read(wineList);
+        Collections.sort(wineList);
+        for (DataItem wine :
+                wineList) {
+            System.out.println(wine.getRid()+" " + wine.getAnoColheita());
+        }
+
+
+//        String csvFile = "./data/wine.csv";
+//        LineNumberReader br = null;
+//        try {
+//            br = new LineNumberReader(new FileReader(csvFile));
+//            System.out.println(br.readLine());
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
     }
 }
