@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class ReadData {
 
-    public void read(ArrayList wineList){
+    public static void read(ArrayList wineList){
 
         String csvFile = "./data/wine.csv";
         BufferedReader br = null;
