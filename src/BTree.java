@@ -27,32 +27,37 @@ public class BTree {
             br = new BufferedReader(new FileReader("./data/index.csv"));
             line = br.readLine();
             String[] nodeFile = line.split(csvSplitBy);
-
+            System.out.println(nodeFile[0]);
             while(nodeFile[6].equalsIgnoreCase("false")){
                 if(key<Integer.parseInt(nodeFile[1])){
                     //LEFT
-                    for(int i=1;i<=Integer.parseInt(nodeFile[3]);i++){
+                    int leftChild = Integer.parseInt(nodeFile[3]);
+                    int id = Integer.parseInt(nodeFile[0]);
+                    for(int i=1;i<=(Integer.parseInt(nodeFile[3])-Integer.parseInt(nodeFile[0]));i++){
                         line = br.readLine();
+                        nodeFile = line.split(csvSplitBy);
                     }
-                    nodeFile = line.split(csvSplitBy);
                 }
-                else if(key>=Integer.parseInt(nodeFile[1]) && (nodeFile[2].equalsIgnoreCase("-") || key<Integer.parseInt(nodeFile[2]))){
+                else if(key>=Integer.parseInt(nodeFile[1]) && key<Integer.parseInt(nodeFile[2])){
                     //CENTER
-                    for(int i=1;i<=Integer.parseInt(nodeFile[4]);i++){
+                    int centerChild = Integer.parseInt(nodeFile[4]);
+                    int id = Integer.parseInt(nodeFile[0]);
+                    for(int i=1;i<=centerChild-id;i++){
                         line = br.readLine();
+                        nodeFile = line.split(csvSplitBy);
                     }
-                    nodeFile = line.split(csvSplitBy);
                 }
                 else{
                     //RIGHT
-                    for(int i=1;i<=Integer.parseInt(nodeFile[5]);i++){
+                    int rightChild = Integer.parseInt(nodeFile[5]);
+                    int id = Integer.parseInt(nodeFile[0]);
+                    for(int i=1;i<=Integer.parseInt(nodeFile[5])-Integer.parseInt(nodeFile[0]);i++){
                         line = br.readLine();
+                        nodeFile = line.split(csvSplitBy);
                     }
-                    nodeFile = line.split(csvSplitBy);
                 }
+                System.out.println(nodeFile[0]);
             }
-
-            System.out.println(nodeFile[0]);
 
         } catch (FileNotFoundException e){
             e.printStackTrace();

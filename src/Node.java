@@ -17,7 +17,7 @@ public class Node {
 
     public Node() {
         this.keyLeft = -1;
-        this.keyRight = -1;
+        this.keyRight = 9999;
         this.isLeaf = false;
     }
 
