@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 /**
  * Created by leolinhares on 02/07/2016.
@@ -142,7 +143,7 @@ public class BTree {
                     node.getRightDataItens().add(wineList.get(i+1));
                 }
             }
-            else if(node.getKeyRight() == -1){
+            else if(node.getKeyRight() == 9999){
                 node.setKeyRight(wineList.get(i+1).anoColheita);
                 node.getRightDataItens().add(wineList.get(i+1));
             }
@@ -158,27 +159,41 @@ public class BTree {
         return auxList;
     }
 
-    public void exportTree(){
+    public void exportTree() {
         try {
             FileWriter writer = new FileWriter("./data/index.csv");
 
-            for (Node node:nodeList) {
+            for (Node node : nodeList) {
                 writer.append(Integer.toString(node.getId()));
                 writer.append(",");
-                if(node.getKeyLeft()!=-1){writer.append(Integer.toString(node.getKeyLeft()));}
-                else{writer.append("-");}
+                if (node.getKeyLeft() != -1) {
+                    writer.append(Integer.toString(node.getKeyLeft()));
+                } else {
+                    writer.append("-");
+                }
                 writer.append(",");
-                if(node.getKeyRight()!=-1)writer.append(Integer.toString(node.getKeyRight()));
-                else{writer.append("-");}
+                if (node.getKeyRight() != -1) writer.append(Integer.toString(node.getKeyRight()));
+                else {
+                    writer.append("-");
+                }
                 writer.append(",");
-                if(node.getLeft()!=null){writer.append(Integer.toString(node.getLeft().getId()));}
-                else {writer.append("-");}
+                if (node.getLeft() != null) {
+                    writer.append(Integer.toString(node.getLeft().getId()));
+                } else {
+                    writer.append("-");
+                }
                 writer.append(",");
-                if(node.getLeft()!=null){writer.append(Integer.toString(node.getMiddle().getId()));}
-                else {writer.append("-");}
+                if (node.getLeft() != null) {
+                    writer.append(Integer.toString(node.getMiddle().getId()));
+                } else {
+                    writer.append("-");
+                }
                 writer.append(",");
-                if(node.getRight()!=null){writer.append(Integer.toString(node.getRight().getId()));}
-                else{writer.append("-");}
+                if (node.getRight() != null) {
+                    writer.append(Integer.toString(node.getRight().getId()));
+                } else {
+                    writer.append("-");
+                }
                 writer.append(",");
                 writer.append(Boolean.toString(node.isLeaf()));
                 writer.append(",");
@@ -192,11 +207,65 @@ public class BTree {
 
             writer.flush();
             writer.close();
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+
+    public Node generateBTree(ArrayList<Node> node_list){
+        Iterator<Node> it  = node_list.iterator();
+        Node root = new Node();
+        Node currentNode = new Node(); // cria nó vazio
+
+        Node first = it.next();
+        Node second = it.next();
+        currentNode.setLeft(first);
+        currentNode.setMiddle(second);
+        currentNode.setKeyLeft(second.getKeyLeft());
+
+        while (it.hasNext()){
+            if (currentNode.hasSpace()){
+                Node next = it.next();
+                //esquerda tem espaco
+                if (currentNode.getKeyLeft() == -1){
+
+                }
+                //direita tem espaco
+                else if(currentNode.getKeyRight() == 9999){
+                    currentNode.setRight(next);
+                    currentNode.setKeyRight(next.getKeyLeft());
+                }
+                currentNode.setMiddle(second);
+                currentNode.setKeyLeft(second.getKeyLeft());
+
+            }else {
+                Node newNode = new Node();
+                Node newRoot = new Node();
+                Node next = it.next();
+                newNode.setLeft(currentNode.getRight());
+                newNode.setMiddle(next);
+                newNode.setKeyLeft(next.getKeyLeft());
+                Node next1 = it.next();
+                newNode.setRight(next1);
+                newNode.setKeyRight(next1.getKeyLeft());
+
+                newRoot.setLeft(currentNode);
+                newRoot.setMiddle(newNode);
+                newRoot.setKeyLeft(currentNode.getKeyRight());
+
+
+                currentNode.setRight(null);
+                currentNode.setKeyRight(-1);
+
+                currentNode = newNode;
+                root = newRoot;
+
+            }
+        }
+
+        return root;
     }
 
     public ArrayList<Node> getNodeList() {

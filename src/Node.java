@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Node {
 
     private int id;
-    private Node left;
-    private Node middle;
-    private Node right;
+    private Node left = null;
+    private Node middle = null;
+    private Node right = null;
     private int keyLeft;
     private int keyRight;
     private boolean isLeaf;
@@ -27,6 +27,10 @@ public class Node {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean hasSpace(){
+        return (keyLeft == -1 || keyRight == 9999 );
     }
 
     public Node getLeft() {

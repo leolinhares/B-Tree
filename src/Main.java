@@ -7,6 +7,35 @@ import java.util.Collections;
  */
 public class Main {
 
+    public static void print(Node root){
+        System.out.println(root.getKeyLeft());
+        System.out.println(root.getKeyRight());
+        if (root.getLeft() != null){
+            print(root.getLeft());
+        }
+        if (root.getMiddle() != null){
+            print(root.getMiddle());
+        }
+        if (root.getRight() != null){
+            print(root.getRight());
+        }
+    }
+
+    public static void search(Node root, int key){
+        if (key == root.getKeyLeft()){
+            System.out.println(root.getLeftDataItens());
+        }else if (key == root.getKeyRight()){
+            System.out.println(root.getRightDataItens());
+        }else{
+            if (key < root.getKeyLeft()){
+                search(root.getLeft(),key);
+            }else if (key < root.getKeyRight()){
+                search(root.getMiddle(),key);
+            }else {
+                search(root.getRight(),key);
+            }
+        }
+    }
     public static void main(String[] args) {
 
 
@@ -18,6 +47,9 @@ public class Main {
 
         /*
         ArrayList<Node> nodes = bt.createTree();
+        Node root = bt.generateBTree(nodes);
+        print(root);
+        search(root,2008);
 
         for (Node node:nodes) {
             System.out.println("Node:");
