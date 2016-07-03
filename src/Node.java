@@ -5,6 +5,7 @@ import java.util.ArrayList;
  */
 public class Node {
 
+    private int id;
     private Node left;
     private Node middle;
     private Node right;
@@ -18,6 +19,14 @@ public class Node {
         this.keyLeft = -1;
         this.keyRight = -1;
         this.isLeaf = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Node getLeft() {

@@ -11,6 +11,12 @@ public class Main {
 
 
         BTree bt = new BTree();
+        bt.generateTree();
+        bt.exportTree();
+
+        bt.search(2007);
+
+        /*
         ArrayList<Node> nodes = bt.createTree();
 
         for (Node node:nodes) {
@@ -19,7 +25,7 @@ public class Main {
             System.out.println(node.getLeftDataItens().size());
             System.out.println(node.getKeyRight());
             System.out.println(node.getRightDataItens().size());
-        }
+        }*/
 
 
         /* ArrayList<DataItem> wineList = new ArrayList<>();
