@@ -62,8 +62,12 @@ public class BTree {
                 if(key == Integer.parseInt(nodeFile[1])){ //LEFT
                      data = nodeFile[7].split("/");
                 }
-                else{ //RIGHT
+                else if(key == Integer.parseInt(nodeFile[2])){ //RIGHT
                      data = nodeFile[8].split("/");
+                }
+                else{
+                    String[] error = {"nao existe"};
+                    return error;
                 }
             }
 

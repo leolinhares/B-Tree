@@ -43,17 +43,19 @@ public class Main {
         bt.BFS(bt.generateBTree());
         bt.exportTree();
         String[] aux;
-        aux = bt.search(2012);
-
-        for (String s :
-                aux) {
-            String csvFile = "./data/wine.csv";
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(csvFile));
-                br.skip(Integer.parseInt(s)); //pula as linhas que ja foram lidas
-                System.out.println(br.readLine());
-            } catch (IOException e) {
-                e.printStackTrace();
+        aux = bt.search(2010);
+        if (aux[0].equalsIgnoreCase("nao existe")) {
+            System.out.println("O ano escolhido nao possui vinho cadastrado no banco");
+        } else {
+            for (String s : aux) {
+                String csvFile = "./data/wine.csv";
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(csvFile));
+                    br.skip(Integer.parseInt(s)); //pula as linhas que ja foram lidas
+                    System.out.println(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
