@@ -1,8 +1,8 @@
-1,2005,9999,2,3,-,false,{array left},{array right}
-2,2002,9999,4,5,-,false,{array left},{array right}
-3,2007,2011,6,7,8,false,{array left},{array right}
-4,1998,2001,-,-,-,true,{array left},{array right}
-5,2002,2003,-,-,-,true,{array left},{array right}
-6,2005,2006,-,-,-,true,{array left},{array right}
-7,2007,2008,-,-,-,true,{array left},{array right}
-8,2011,2012,-,-,-,true,{array left},{array right}
+1,2005,9999,2,3,-,false,-,-
+2,2002,9999,4,5,-,false,-,-
+3,2007,2011,6,7,8,false,-,-
+4,1998,2001,-,-,-,true,56/122/,317/470/
+5,2002,2003,-,-,-,true,645/,253/
+6,2005,2006,-,-,-,true,178/539/776/983/,214/412/707/830/
+7,2007,2008,-,-,-,true,1236/1299/,368/596/877/937/1343/
+8,2011,2012,-,-,-,true,1033/1086/,0/1122/1189/

@@ -40,10 +40,27 @@ public class Main {
 
 
         BTree bt = new BTree();
-        bt.generateTree();
+        bt.BFS(bt.generateBTree());
         bt.exportTree();
+        String[] aux;
+        aux = bt.search(2012);
 
-        bt.search(2007);
+        for (String s :
+                aux) {
+            String csvFile = "./data/wine.csv";
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(csvFile));
+                br.skip(Integer.parseInt(s)); //pula as linhas que ja foram lidas
+                System.out.println(br.readLine());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        //bt.exportTree();
+
+        //bt.search(2007);
 
         /*
         ArrayList<Node> nodes = bt.createTree();
