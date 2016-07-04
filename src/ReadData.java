@@ -14,11 +14,14 @@ public class ReadData {
         String csvSplitBy = ", ";
         int lines = 0;
         try{
-            for (int i = 0; i <= 25; i++){
+            //for (int i = 0; i <= 30; i++){
+            do{
                 br = new BufferedReader(new FileReader(csvFile));
                 br.skip(lines); //pula as linhas que ja foram lidas
                 line = br.readLine();
-
+                if (line == null){
+                    break;
+                }
                 String[] wine = line.split(csvSplitBy);
                 DataItem item = new DataItem();
                 item.setRid(lines);
@@ -28,7 +31,7 @@ public class ReadData {
                 lines += line.length()+1; // salva quanto foi lido nessa linha
 
                 br.close();
-            }
+            }while(line!=null);
 
         } catch (FileNotFoundException e){
             e.printStackTrace();

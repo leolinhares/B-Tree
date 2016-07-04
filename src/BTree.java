@@ -67,7 +67,7 @@ public class BTree {
                 }
                 else{
                     String[] error = {"nao existe"};
-                    return error;
+                    //return error;
                 }
             }
 
@@ -234,6 +234,57 @@ public class BTree {
             }
         }
 
+        return root;
+    }
+
+    public Node createBTree(){
+
+        Node root = new Node();
+        ArrayList<Node> bulkList = bulkLoading();
+        Iterator<Node> it = bulkList.iterator();
+        Node aux = it.next();
+        root.setLeft(aux);
+
+        // node 2
+        Node aux2 = it.next();
+        root.setMiddle(aux2);
+        root.setKeyLeft(aux2.getKeyLeft());
+
+        Node current = root;
+        while(it.hasNext()){
+            if(current.hasSpace()){
+                aux = it.next();
+                current.setRight(aux);
+                current.setKeyRight(aux.getKeyLeft());
+            }
+            else if(!root.hasSpace()){
+                Node newRoot = new Node();
+                Node newCurrent = new Node();
+                aux = it.next();
+                newCurrent.setLeft(current.getRight());
+                newCurrent.setMiddle(aux);
+                newCurrent.setKeyLeft(aux.getKeyLeft());
+                newRoot.setLeft(current);
+                newRoot.setMiddle(newCurrent);
+                newRoot.setKeyLeft(current.getKeyRight());
+                current.setKeyRight(9999);
+                current.setRight(null);
+                current = newCurrent;
+                root = newRoot;
+            }
+            else{
+                Node newCurrent = new Node();
+                aux = it.next();
+                newCurrent.setLeft(current.getRight());
+                newCurrent.setMiddle(aux);
+                newCurrent.setKeyLeft(aux.getKeyLeft());
+                root.setRight(newCurrent);
+                root.setKeyRight(current.getKeyRight());
+                current.setKeyRight(9999);
+                current.setRight(null);
+                current = newCurrent;
+            }
+        }
         return root;
     }
 
